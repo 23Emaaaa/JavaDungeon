@@ -18,7 +18,8 @@ public class App extends PApplet {
 
     @Override
     public void setup() {
-        player = new Player("Hero",getGraphics());
+        var playerSprite = loadImage("assets/kenney_tinydungeon/Tiles/tile_0085.png");
+        player = new Player("Hero",getGraphics(),playerSprite);
         player.setPos(10,10);
 
     }
