@@ -1,11 +1,15 @@
 package dungeon;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.event.KeyEvent;
+
+import java.util.Vector;
 
 public class App extends PApplet {
 
     private Player player;
+    private Map map;
 
     public App() {
 
@@ -19,6 +23,18 @@ public class App extends PApplet {
     @Override
     public void setup() {
         var playerSprite = loadImage("assets/kenney_tinydungeon/Tiles/tile_0085.png");
+
+        var sprites = new Vector<PImage>();
+        for (int i = 0; i < 132; i++) {
+            var path = String.format("assets/kenney_tinydungeon/Tiles/tile_%04d.png",i);
+            System.out.println(path);
+            var img = loadImage(path);
+            sprites.add(img);
+        }
+        System.out.println(sprites);
+
+        map = new Map(50,40,16,getGraphics(),sprites);
+
         player = new Player("Hero",getGraphics(),playerSprite);
         player.setPos(10,10);
 
@@ -28,7 +44,7 @@ public class App extends PApplet {
     public void draw() {
         background(55);
         update();
-
+        map.draw();
         player.draw();
     }
 
