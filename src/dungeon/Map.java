@@ -17,7 +17,7 @@ public class Map {
         this.sprites = sprites;
         this.tileMap = new Tile[width*height];
         for (int i = 0; i < width*height; i++) {
-            tileMap[i] = new Tile();
+            tileMap[i] = new Tile(Tile.FLOOR);
         }
         this.height = height;
         this.width = width;
